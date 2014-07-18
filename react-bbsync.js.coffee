@@ -6,7 +6,7 @@
   else if typeof exports is 'object'
     module.exports = factory()
   else
-    root.BBRsync = factory()
+    root.ReactBackboneSync = factory()
 ) this, ->
   componentDidMount: ->
     @getBackboneModels().forEach @injectModel, @
