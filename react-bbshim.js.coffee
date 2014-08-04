@@ -7,9 +7,6 @@
     root.ReactBackboneShim = factory(root.React, root.Backbone)
 ) this, (React, Backbone) ->
 
-  # getDefaultProps: ->
-    # model: new Backbone.Model
-
   propTypes:
     model: React.PropTypes.instanceOf(Backbone.Model).isRequired
 
@@ -17,7 +14,7 @@
     return @props.model.attributes
 
   updateState: (model) ->
-    @replaceState model.attributes
+    @setState model.attributes
 
   componentDidMount: ->
     @props.model.on 'add change remove', @updateState, @
@@ -26,4 +23,4 @@
     @updateState props.model
 
   componentWillUnmount: ->
-    @props.model.off null, @updateState, @
+    @props.model.off 'add change remove', @updateState, @
